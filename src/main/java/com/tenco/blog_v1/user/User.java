@@ -30,7 +30,7 @@ public class User {
 
     // 단방향, 양방향 매핑(mappedBy)
     // @OneToMany(mappedBy = "user",fetch = FetchType.LAZY) // 지연 로딩 설정
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER) // 즉시 로딩 설정
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY) // 즉시 로딩 설정
     private List<Board> boards;
 
     @Builder

@@ -18,7 +18,25 @@ import java.util.List;
 public class BoardController {
 
     // DI
+    // 네이티브 쿼리 연습
     private final BoardNativeRepository boardNativeRepository;
+
+    // JPA API, JPQL
+    private final BoardRepository boardRepository;
+
+
+    // 주소 설계 - http://localhost:8080/board/1
+    // 특정 게시글 요청 화면
+    @GetMapping("/board/{id}")
+    public String detail(@PathVariable(name = "id")Integer id, HttpServletRequest request){
+        // JPA API의 활용
+        // Board board = boardRepository.findById(id);
+        Board board = boardRepository.findByIdJoinUser(id);
+
+        request.setAttribute("board",board);
+
+        return "board/detail-form";
+    }
 
     @GetMapping("/")
     public String index(Model model){
@@ -50,15 +68,7 @@ public class BoardController {
 
 
 
-    // 주소 설계 - http://localhost:8080/board/1
-    // 특정 게시글 요청 화면
-    @GetMapping("/board/{id}")
-    public String detail(@PathVariable(name = "id")Integer id, HttpServletRequest request){
-       Board board = boardNativeRepository.findById(id);
-        request.setAttribute("board",board);
 
-        return "board/detail";
-    }
 
     // 주소 설계 - http://localhost:8080/board/1/delete (form 활용이기 깨문에 delete 선언)
     // form 태그에서는 GET, POST 방식만 지원한다.
