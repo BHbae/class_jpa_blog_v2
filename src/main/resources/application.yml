@@ -1,4 +1,4 @@
 spring:
   profiles:
     active:
-      - dev #???? ??? ??
+      - dev #활성화할 프로필 설정

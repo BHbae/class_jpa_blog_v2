@@ -1,6 +1,6 @@
-package com.tenco.blog_v1.board;
+package com.tenco.blog_v2.board;
 
-import com.tenco.blog_v1.user.User;
+import com.tenco.blog_v2.user.User;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -36,5 +36,7 @@ public class Board {
         this.user = user;
         this.createdAt = createdAt;
     }
+
+
 
 }
